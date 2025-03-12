@@ -1,0 +1,19 @@
+button {
+  padding: 5px 15px;
+  border-radius: 5px;
+  border: none;
+}
+
+button:hover {
+  cursor: pointer;
+}
+.button-sale {
+  color: white;
+  background-color: #2cb1ba;
+}
+
+.button-login {
+  background-color: white;
+  color: #2cb1ba;
+  border: 1px solid #2cb1ba;
+}

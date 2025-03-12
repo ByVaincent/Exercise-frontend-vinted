@@ -1,0 +1,26 @@
+.hero {
+  background: url("/banner-wide-2560x1441.jpg") no-repeat center;
+  height: 450px;
+}
+
+.hero > div {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.cta {
+  background-color: white;
+  width: 400px;
+  height: 270px;
+  font-size: 2.3em;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.cta button {
+  width: 185px;
+  height: 43px;
+}

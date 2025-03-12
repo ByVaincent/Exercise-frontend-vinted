@@ -1,4 +1,18 @@
+header {
+  padding: 10px 0;
+}
 header > div {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+}
+
+.login-sale {
+  display: flex;
+  gap: 30px;
+}
+
+.login {
+  display: flex;
+  gap: 10px;
 }
