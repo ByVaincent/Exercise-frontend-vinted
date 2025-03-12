@@ -1,0 +1,14 @@
+.pagination {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 1.2em;
+}
+
+.pagination-arrow {
+  font-size: 1.5em;
+}
+
+.pagination-arrow:hover {
+  cursor: pointer;
+}
