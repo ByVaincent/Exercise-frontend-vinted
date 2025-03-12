@@ -10,7 +10,6 @@ const Home = () => {
   const [productsDatas, setProductsDatas] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [page, setPage] = useState(1);
-  console.log(page);
 
   useEffect(() => {
     (async () => setProductsDatas(await fetchAllProducts(page)))();

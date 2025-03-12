@@ -1,9 +1,13 @@
-.product-preview {
+.product-preview-link {
   width: calc((100% - 80px) / 5);
+}
+
+.product-preview {
   display: flex;
   flex-direction: column;
   gap: 10px;
   color: black;
+  width: 100%;
 }
 
 .user-avatar-container {
@@ -19,7 +23,7 @@
   opacity: 0.5;
 }
 
-.product-preview-user {
+.product-owner {
   display: flex;
   gap: 10px;
   align-items: center;
