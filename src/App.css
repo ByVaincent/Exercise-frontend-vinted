@@ -1,0 +1,15 @@
+@import url("./assets/fonts/fonts.css");
+@import url("./assets/css/reset.css");
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "V-Inter", sans-serif;
+}
+
+.container {
+  max-width: 1200px;
+  margin: auto;
+}
