@@ -1,7 +1,8 @@
 import Button from "../components/Button/Button";
+import axios from "axios";
 
 import { useEffect, useState } from "react";
-import fetchAllProducts from "../utils/fetchAllProducts";
+
 import Products from "../components/Products/Products";
 import Product from "./Product";
 import Pagination from "../components/Pagination/Pagination";
@@ -13,49 +14,53 @@ const Home = () => {
   const [page, setPage] = useState(1);
 
   useEffect(() => {
-    (async () => setProductsDatas(await fetchAllProducts(page)))();
-    setIsLoading(false);
+    const fetchAllProducts = async (page) => {
+      const productsDatas = await axios.get(
+        `${import.meta.env.VITE_API_URL}/offers?page=${page}&limit=15`
+      );
+
+      setProductsDatas(productsDatas.data);
+      setIsLoading(false);
+    };
+
+    fetchAllProducts();
   }, [page]);
 
   return (
-    isLoading || (
-      <main>
-        <section className="hero">
-          <div className="container">
-            <div className="cta">
-              <p>Prêt à faire du tri dans vos placards?</p>
-              <Button text={"Commencer à vendre"} classProps={"button-sale"} />
-            </div>
+    <main>
+      <section className="hero">
+        <div className="container">
+          <div className="cta">
+            <p>Prêt à faire du tri dans vos placards?</p>
+            <Button text={"Commencer à vendre"} classProps={"button-sale"} />
           </div>
-          {isLoading ? (
-            <Spinner />
-          ) : (
-            <section className="products">
-              <div className="container">
-                {isLoading ||
-                  (productsDatas && (
-                    <Pagination
-                      page={page}
-                      setPage={setPage}
-                      count={productsDatas.count}
-                    />
-                  ))}
-                <div className="products-preview-display">
-                  {isLoading ? (
-                    <p>Loading...</p>
-                  ) : (
-                    productsDatas &&
-                    productsDatas.offers.map((offer) => (
-                      <Products key={offer._id} offer={offer} />
-                    ))
-                  )}
-                </div>
+        </div>
+        {isLoading ? (
+          <Spinner />
+        ) : (
+          <section className="products">
+            <div className="container">
+              {isLoading || (
+                <Pagination
+                  page={page}
+                  setPage={setPage}
+                  count={productsDatas.count}
+                />
+              )}
+              <div className="products-preview-display">
+                {isLoading ? (
+                  <p>Loading...</p>
+                ) : (
+                  productsDatas.offers.map((offer) => (
+                    <Products key={offer._id} offer={offer} />
+                  ))
+                )}
               </div>
-            </section>
-          )}
-        </section>
-      </main>
-    )
+            </div>
+          </section>
+        )}
+      </section>
+    </main>
   );
 };
 export default Home;

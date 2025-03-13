@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
-import fetchApiProduct from "../utils/fetchApiProduct";
+import axios from "axios";
 import Button from "../components/Button/Button";
 import Spinner from "../components/Spinner";
 
@@ -11,11 +11,16 @@ const Product = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    (async () => {
-      const datas = await fetchApiProduct(id);
-      setProductdatas(datas);
+    const fetchApiProduct = async () => {
+      const datas = await axios.get(
+        `${import.meta.env.VITE_API_URL_PRODUCT}/offer/${id}`
+      );
+
+      setProductdatas(datas.data);
       setIsLoading(false);
-    })();
+    };
+
+    fetchApiProduct();
   }, [id]);
 
   return isLoading ? (
