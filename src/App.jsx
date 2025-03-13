@@ -28,6 +28,7 @@ function App() {
           <ConnectionModal
             setConnectionModal={setConnectionModal}
             modalType={connectionModal}
+            setToken={setToken}
           />
         )}
       </Router>
