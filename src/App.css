@@ -16,3 +16,10 @@ body {
   max-width: 1200px;
   margin: auto;
 }
+
+.spinner-container {
+  width: 200px;
+  justify-self: center;
+  display: flex;
+  justify-content: center;
+}

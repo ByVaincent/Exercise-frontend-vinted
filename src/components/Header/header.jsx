@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import Button from "../Button/Button";
 import "./header.css";
 
@@ -5,9 +6,11 @@ const Header = () => {
   return (
     <header>
       <div className="container">
-        <div className="logo">
-          <img src="/logo.svg" alt="Logo de vinted" />
-        </div>
+        <Link to={"/"}>
+          <div className="logo">
+            <img src="/logo.svg" alt="Logo de vinted" />
+          </div>
+        </Link>
         <div className="search-bar">
           <input type="text" />
         </div>
