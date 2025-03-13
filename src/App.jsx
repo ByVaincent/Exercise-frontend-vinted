@@ -5,24 +5,31 @@ import "./App.css";
 import Header from "./components/Header/Header";
 import ConnectionModal from "./components/ConnectionModal/ConnectionModal";
 import { useState } from "react";
+import cookies from "js-cookie";
 
 function App() {
+  //useState for displaying the connection modal and manage the user connection
   const [connectionModal, setConnectionModal] = useState(null);
-  const [isLogged, setIsLogged] = useState(false);
+  const [token, setToken] = useState(cookies.get("token") || false);
 
   return (
     <>
       <Router>
         <Header
           setConnectionModal={setConnectionModal}
-          isLogged={isLogged}
-          setIsLogged={setIsLogged}
+          token={token}
+          setToken={setToken}
         />
         <Routes>
           <Route path={"/"} element={<Home />}></Route>
           <Route path={"/product/:id"} element={<Product />}></Route>
         </Routes>
-        {connectionModal && <ConnectionModal />}
+        {connectionModal && (
+          <ConnectionModal
+            setConnectionModal={setConnectionModal}
+            modalType={connectionModal}
+          />
+        )}
       </Router>
     </>
   );

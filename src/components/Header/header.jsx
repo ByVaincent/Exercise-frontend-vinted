@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import Button from "../Button/Button";
 import "./header.css";
 
-const Header = ({ setConnectionModal, isLogged, setIsLogged }) => {
+const Header = ({ token, setToken, setConnectionModal }) => {
   return (
     <header>
       <div className="container">
@@ -15,11 +15,11 @@ const Header = ({ setConnectionModal, isLogged, setIsLogged }) => {
           <input type="text" />
         </div>
         <div className="login-sale">
-          {isLogged ? (
+          {token ? (
             <div className="login">
               <Button
                 text={"Se déconnecter"}
-                setState={setIsLogged}
+                setState={setToken}
                 type={false}
               />
             </div>
