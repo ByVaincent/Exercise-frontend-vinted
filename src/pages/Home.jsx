@@ -17,9 +17,9 @@ const Home = ({ filters }) => {
     try {
       const fetchAllProducts = async () => {
         const productsDatas = await axios.get(
-          `${import.meta.env.VITE_API_URL}/offers?page=${page}&limit=15${
-            filters.title && "&title=" + filters.title
-          }`
+          `${import.meta.env.VITE_API_URL}/offers?page=${page}&limit=15&sort=${
+            filters.sort
+          }${filters.title && "&title=" + filters.title}`
         );
 
         setProductsDatas(productsDatas.data);

@@ -13,7 +13,7 @@ function App() {
   const [token, setToken] = useState(cookies.get("token") || false);
 
   //states for filters
-  const [filters, setFilters] = useState({ title: "" });
+  const [filters, setFilters] = useState({ title: "", sort: "price-asc" });
   console.log(filters);
 
   return (

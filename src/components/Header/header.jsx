@@ -27,6 +27,21 @@ const Header = ({
               });
             }}
           />
+          <div className="order-filter">
+            <button
+              onClick={() => {
+                setFilters((prevState) => {
+                  return {
+                    ...prevState,
+                    sort:
+                      filters.sort === "price-asc" ? "price-desc" : "price-asc",
+                  };
+                });
+              }}
+            >
+              Crois / décrois
+            </button>
+          </div>
         </div>
         <div className="login-sale">
           {token ? (
