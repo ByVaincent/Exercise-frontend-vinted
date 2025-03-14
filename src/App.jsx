@@ -4,7 +4,7 @@ import Product from "./pages/Product";
 import "./App.css";
 import Header from "./components/Header/Header";
 import ConnectionModal from "./components/ConnectionModal/ConnectionModal";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import cookies from "js-cookie";
 
 function App() {
@@ -12,9 +12,18 @@ function App() {
   const [connectionModal, setConnectionModal] = useState(null);
   const [token, setToken] = useState(cookies.get("token") || false);
 
-  //states for filters
-  const [filters, setFilters] = useState({ title: "", sort: "price-asc" });
-  console.log(filters);
+  //states for filters ===> minPrice and max price are arrays because of react range
+  const [minPrice, setMinPrice] = useState([0]);
+  const [filters, setFilters] = useState({
+    title: "",
+    sort: "price-asc",
+  });
+
+  useEffect(() => {
+    setFilters((prevState) => {
+      return { ...prevState, minPrice: minPrice[0] };
+    });
+  }, [minPrice]);
 
   return (
     <>
@@ -25,6 +34,8 @@ function App() {
           setToken={setToken}
           filters={filters}
           setFilters={setFilters}
+          minPrice={minPrice}
+          setMinPrice={setMinPrice}
         />
         <Routes>
           <Route path={"/"} element={<Home filters={filters} />}></Route>

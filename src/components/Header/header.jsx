@@ -1,6 +1,9 @@
 import { Link } from "react-router-dom";
 import Button from "../Button/Button";
 import "./header.css";
+import * as React from "react";
+import { Range } from "react-range";
+import { useState } from "react";
 
 const Header = ({
   token,
@@ -8,6 +11,8 @@ const Header = ({
   setConnectionModal,
   filters,
   setFilters,
+  minPrice,
+  setMinPrice,
 }) => {
   return (
     <header>
@@ -17,7 +22,7 @@ const Header = ({
             <img src="/logo.svg" alt="Logo de vinted" />
           </div>
         </Link>
-        <div className="search-bar">
+        <div className="filters">
           <input
             type="text"
             value={filters.title}
@@ -41,6 +46,43 @@ const Header = ({
             >
               Crois / décrois
             </button>
+            <div className="price-filter">
+              <Range
+                label="Select your value"
+                step={1}
+                min={0}
+                max={500}
+                values={minPrice}
+                onChange={(values) => {
+                  setMinPrice(values);
+                }}
+                renderTrack={({ props, children }) => (
+                  <div
+                    {...props}
+                    style={{
+                      ...props.style,
+                      height: "6px",
+                      width: "100%",
+                      backgroundColor: "#ccc",
+                    }}
+                  >
+                    {children}
+                  </div>
+                )}
+                renderThumb={({ props }) => (
+                  <div
+                    {...props}
+                    key={props.key}
+                    style={{
+                      ...props.style,
+                      height: "42px",
+                      width: "42px",
+                      backgroundColor: "#999",
+                    }}
+                  />
+                )}
+              />
+            </div>
           </div>
         </div>
         <div className="login-sale">
