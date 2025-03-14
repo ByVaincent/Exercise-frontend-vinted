@@ -8,23 +8,29 @@ import Product from "./Product";
 import Pagination from "../components/Pagination/Pagination";
 import Spinner from "../components/Spinner";
 
-const Home = () => {
+const Home = ({ filters }) => {
   const [productsDatas, setProductsDatas] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [page, setPage] = useState(1);
 
   useEffect(() => {
-    const fetchAllProducts = async () => {
-      const productsDatas = await axios.get(
-        `${import.meta.env.VITE_API_URL}/offers?page=${page}&limit=15`
-      );
+    try {
+      const fetchAllProducts = async () => {
+        const productsDatas = await axios.get(
+          `${import.meta.env.VITE_API_URL}/offers?page=${page}&limit=15${
+            filters.title && "&title=" + filters.title
+          }`
+        );
 
-      setProductsDatas(productsDatas.data);
-      setIsLoading(false);
-    };
+        setProductsDatas(productsDatas.data);
+        setIsLoading(false);
+      };
 
-    fetchAllProducts();
-  }, [page]);
+      fetchAllProducts();
+    } catch (error) {
+      console.log(error.response);
+    }
+  }, [page, filters]);
 
   return (
     <main>
@@ -40,16 +46,26 @@ const Home = () => {
         ) : (
           <section className="products">
             <div className="container">
-              {isLoading || (
-                <Pagination
-                  page={page}
-                  setPage={setPage}
-                  count={productsDatas.count}
-                />
-              )}
+              {isLoading ||
+                (productsDatas.offers.length > 0 && (
+                  <div>
+                    <Pagination
+                      page={page}
+                      setPage={setPage}
+                      count={
+                        productsDatas.count === 0 ? 1 : productsDatas.count
+                      }
+                    />
+                    <span>({productsDatas.count} offres)</span>
+                  </div>
+                ))}
               <div className="products-preview-display">
                 {isLoading ? (
                   <p>Loading...</p>
+                ) : productsDatas.offers.length === 0 ? (
+                  <div className="noResultDisplay">
+                    Aucune offre correspondante
+                  </div>
                 ) : (
                   productsDatas.offers.map((offer) => (
                     <Products key={offer._id} offer={offer} />

@@ -12,6 +12,10 @@ function App() {
   const [connectionModal, setConnectionModal] = useState(null);
   const [token, setToken] = useState(cookies.get("token") || false);
 
+  //states for filters
+  const [filters, setFilters] = useState({ title: "" });
+  console.log(filters);
+
   return (
     <>
       <Router>
@@ -19,9 +23,11 @@ function App() {
           setConnectionModal={setConnectionModal}
           token={token}
           setToken={setToken}
+          filters={filters}
+          setFilters={setFilters}
         />
         <Routes>
-          <Route path={"/"} element={<Home />}></Route>
+          <Route path={"/"} element={<Home filters={filters} />}></Route>
           <Route path={"/product/:id"} element={<Product />}></Route>
         </Routes>
         {connectionModal && (

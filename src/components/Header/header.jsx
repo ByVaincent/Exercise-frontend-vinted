@@ -2,7 +2,13 @@ import { Link } from "react-router-dom";
 import Button from "../Button/Button";
 import "./header.css";
 
-const Header = ({ token, setToken, setConnectionModal }) => {
+const Header = ({
+  token,
+  setToken,
+  setConnectionModal,
+  filters,
+  setFilters,
+}) => {
   return (
     <header>
       <div className="container">
@@ -12,7 +18,15 @@ const Header = ({ token, setToken, setConnectionModal }) => {
           </div>
         </Link>
         <div className="search-bar">
-          <input type="text" />
+          <input
+            type="text"
+            value={filters.title}
+            onChange={(event) => {
+              setFilters((prevState) => {
+                return { ...prevState, title: event.target.value };
+              });
+            }}
+          />
         </div>
         <div className="login-sale">
           {token ? (

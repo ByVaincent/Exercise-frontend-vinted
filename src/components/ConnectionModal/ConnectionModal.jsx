@@ -42,8 +42,10 @@ const ConnectionModal = ({ setConnectionModal, modalType, setToken }) => {
       setToken(token);
       setConnectionModal(null);
     } catch (error) {
-      console.log(error.response);
-      setError("Un problème est survenue lors de votre inscription");
+      setError(
+        error.response.data.message ||
+          "Un problème est survenue lors de votre inscription"
+      );
     }
   };
 
@@ -62,8 +64,9 @@ const ConnectionModal = ({ setConnectionModal, modalType, setToken }) => {
       setToken(token);
       setConnectionModal(null);
     } catch (error) {
-      console.log(error.response);
-      setError("Email ou mot de passe incorrect");
+      setError(
+        error.response.data.message || "Email ou mot de passe incorrect"
+      );
     }
   };
 
