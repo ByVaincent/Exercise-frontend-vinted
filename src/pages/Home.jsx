@@ -14,7 +14,7 @@ const Home = () => {
   const [page, setPage] = useState(1);
 
   useEffect(() => {
-    const fetchAllProducts = async (page) => {
+    const fetchAllProducts = async () => {
       const productsDatas = await axios.get(
         `${import.meta.env.VITE_API_URL}/offers?page=${page}&limit=15`
       );

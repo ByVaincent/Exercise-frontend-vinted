@@ -21,6 +21,7 @@ const Header = ({ token, setToken, setConnectionModal }) => {
                 text={"Se déconnecter"}
                 setState={setToken}
                 type={false}
+                disconnect={true}
               />
             </div>
           ) : (
