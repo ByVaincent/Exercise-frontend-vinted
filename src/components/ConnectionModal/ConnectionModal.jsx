@@ -13,19 +13,22 @@ const ConnectionModal = ({ setConnectionModal, modalType, setToken }) => {
   //state for managing and displaying the authentication error
   const [error, setError] = useState(null);
 
-  //sign up request
+  //controlled inputs
+  const [inputsCtrl, setInputsCtrl] = useState({
+    username: "",
+    email: "",
+    password: "",
+    newsletter: false,
+  });
+
+  //sign up request function
   const signUp = async (event) => {
     event.preventDefault();
 
     try {
       const sendDatas = await axios.post(
         "https://lereacteur-vinted-api.herokuapp.com/user/signup",
-        {
-          username: event.target.userName.value,
-          email: event.target.userEmail.value,
-          password: event.target.userPassword.value,
-          newsletter: event.target.acceptNewsletter.checked,
-        },
+        inputsCtrl,
         {
           headers: {
             "Content-Type": "multipart/form-data",
@@ -44,16 +47,13 @@ const ConnectionModal = ({ setConnectionModal, modalType, setToken }) => {
     }
   };
 
-  //login request
+  //login request function
   const login = async (event) => {
     event.preventDefault();
     try {
       const sendLoginDatas = await axios.post(
         "https://lereacteur-vinted-api.herokuapp.com/user/login",
-        {
-          email: event.target.userEmail.value,
-          password: event.target.userPassword.value,
-        }
+        inputsCtrl
       );
 
       const token = sendLoginDatas.data.token;
@@ -77,20 +77,38 @@ const ConnectionModal = ({ setConnectionModal, modalType, setToken }) => {
               <fieldset>
                 <input
                   type="text"
-                  name="userName"
+                  name="username"
                   placeholder="Nom d'utilisateur"
+                  onChange={(event) =>
+                    setInputsCtrl((prevState) => {
+                      return { ...prevState, username: event.target.value };
+                    })
+                  }
+                  value={inputsCtrl.username}
                   required
                 />
                 <input
                   type="email"
-                  name="userEmail"
+                  name="email"
                   placeholder="email"
+                  value={inputsCtrl.email}
+                  onChange={(event) => {
+                    setInputsCtrl((prevState) => {
+                      return { ...prevState, email: event.target.value };
+                    });
+                  }}
                   required
                 />
                 <input
                   type="password"
-                  name="userPassword"
+                  name="password"
                   placeholder="Mot de passe"
+                  value={inputsCtrl.password}
+                  onChange={(event) => {
+                    setInputsCtrl((prevState) => {
+                      return { ...prevState, password: event.target.value };
+                    });
+                  }}
                   required
                 />
               </fieldset>
@@ -99,11 +117,20 @@ const ConnectionModal = ({ setConnectionModal, modalType, setToken }) => {
                 <div>
                   <input
                     type="checkbox"
-                    name="acceptNewsletter"
+                    name="newsletter"
                     id="check-newsletter"
-                  />{" "}
+                    value={inputsCtrl.newsletter}
+                    onChange={(event) => {
+                      setInputsCtrl((prevState) => {
+                        return {
+                          ...prevState,
+                          newsletter: event.target.checked,
+                        };
+                      });
+                    }}
+                  />
                   <label htmlFor="check-newsletter">
-                    S'inscrir à notre newsletter
+                    S'inscrire à notre newsletter
                   </label>
                 </div>
 
@@ -132,14 +159,26 @@ const ConnectionModal = ({ setConnectionModal, modalType, setToken }) => {
               <fieldset>
                 <input
                   type="email"
-                  name="userEmail"
+                  name="email"
                   placeholder="email"
+                  value={inputsCtrl.email}
+                  onChange={(event) => {
+                    setInputsCtrl((prevState) => {
+                      return { ...prevState, email: event.target.value };
+                    });
+                  }}
                   required
                 />
                 <input
                   type="password"
-                  name="userPassword"
+                  name="password"
                   placeholder="Mot de passe"
+                  value={inputsCtrl.password}
+                  onChange={(event) => {
+                    setInputsCtrl((prevState) => {
+                      return { ...prevState, password: event.target.value };
+                    });
+                  }}
                   required
                 />
               </fieldset>
