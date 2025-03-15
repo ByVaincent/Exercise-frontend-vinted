@@ -27,7 +27,7 @@ const ConnectionModal = ({ setConnectionModal, modalType, setToken }) => {
 
     try {
       const sendDatas = await axios.post(
-        "https://lereacteur-vinted-api.herokuapp.com/user/signup",
+        `${import.meta.env.VITE_API_URL}/user/signup`,
         inputsCtrl,
         {
           headers: {
@@ -42,10 +42,10 @@ const ConnectionModal = ({ setConnectionModal, modalType, setToken }) => {
       setToken(token);
       setConnectionModal(null);
     } catch (error) {
-      setError(
-        error.response.data.message ||
-          "Un problème est survenue lors de votre inscription"
-      );
+      console.log(error);
+
+      setError(error.response.data);
+      // error.data || "Un problème est survenue lors de votre inscription"
     }
   };
 
@@ -54,7 +54,7 @@ const ConnectionModal = ({ setConnectionModal, modalType, setToken }) => {
     event.preventDefault();
     try {
       const sendLoginDatas = await axios.post(
-        "https://lereacteur-vinted-api.herokuapp.com/user/login",
+        `${import.meta.env.VITE_API_URL}/user/login`,
         inputsCtrl
       );
 
@@ -64,9 +64,7 @@ const ConnectionModal = ({ setConnectionModal, modalType, setToken }) => {
       setToken(token);
       setConnectionModal(null);
     } catch (error) {
-      setError(
-        error.response.data.message || "Email ou mot de passe incorrect"
-      );
+      setError(error.response.data || "Email ou mot de passe incorrect");
     }
   };
 

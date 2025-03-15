@@ -11,7 +11,10 @@ const Products = ({ offer }) => {
           {owner.account?.avatar && (
             <div className="user-avatar-container">
               <img
-                src={owner.account?.avatar?.secure_url || ""}
+                src={
+                  owner.account?.avatar?.secure_url &&
+                  owner.account.avatar.secure_url
+                }
                 alt="user avatar"
                 className="user-avatar"
               />
@@ -22,9 +25,10 @@ const Products = ({ offer }) => {
 
         <img
           className="product-preview-picture"
-          src={product_image.secure_url || ""}
+          src={product_image[0]?.secure_url || ""}
           alt="photo du produit"
         />
+
         <div className="product-preview-details">
           <p className="product-preview-price">{product_price || ""} €</p>
           <p className="product-preview-size">

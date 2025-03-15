@@ -26,7 +26,6 @@ const TwoThumbs = ({ rtl, filters, setFilters }) => {
         onChange={(values) => {
           const newPriceMin = values[0];
           const newPriceMax = values[1];
-          console.log(newPriceMin, newPriceMax);
 
           setFilters((prevState) => {
             return {

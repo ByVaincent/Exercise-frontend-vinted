@@ -14,7 +14,7 @@ const Product = () => {
     try {
       const fetchApiProduct = async () => {
         const datas = await axios.get(
-          `${import.meta.env.VITE_API_URL_PRODUCT}/offer/${id}`
+          `${import.meta.env.VITE_API_URL}/offer/${id}`
         );
 
         setProductdatas(datas.data);
@@ -36,7 +36,10 @@ const Product = () => {
       <div className="container">
         <div className="product-picture">
           <img
-            src={productDatas.product_image?.secure_url || ""}
+            src={
+              productDatas.product_image[0]?.secure_url &&
+              productDatas.product_image[0].secure_url
+            }
             alt="photo du vetement"
           />
         </div>
