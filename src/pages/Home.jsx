@@ -21,9 +21,8 @@ const Home = ({ filters }) => {
             filters.sort
           }${filters.title && "&title=" + filters.title}&priceMin=${
             filters.minPrice
-          }`
+          }&priceMax=${filters.maxPrice}`
         );
-        console.log(productsDatas);
 
         setProductsDatas(productsDatas.data);
         setIsLoading(false);

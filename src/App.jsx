@@ -17,8 +17,11 @@ function App() {
   const [filters, setFilters] = useState({
     title: "",
     sort: "price-asc",
+    minPrice: 0,
+    maxPrice: 500,
   });
 
+  // method to extract de number of the range price filter, the range price filter send an array with the number inside
   useEffect(() => {
     setFilters((prevState) => {
       return { ...prevState, minPrice: minPrice[0] };
