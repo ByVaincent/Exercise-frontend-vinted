@@ -18,15 +18,8 @@ function App() {
     title: "",
     sort: "price-asc",
     minPrice: 0,
-    maxPrice: 500,
+    maxPrice: 200,
   });
-
-  // method to extract de number of the range price filter, the range price filter send an array with the number inside
-  useEffect(() => {
-    setFilters((prevState) => {
-      return { ...prevState, minPrice: minPrice[0] };
-    });
-  }, [minPrice]);
 
   return (
     <>
