@@ -12,18 +12,29 @@ const Pagination = ({ page, setPage, count }) => {
   };
 
   return (
-    <div className="pagination">
-      <IoIosArrowBack
-        className="pagination-arrow"
-        onClick={() => handleClick("-")}
-      />
-      <p>
-        {page} / {Math.ceil(count / 15)}
-      </p>
-      <IoIosArrowForward
-        className="pagination-arrow"
-        onClick={() => handleClick("+")}
-      />
+    <div className="pagination-count">
+      <div className="pagination">
+        <div className="arrows">
+          {page > 1 && (
+            <IoIosArrowBack
+              className="pagination-arrow"
+              onClick={() => handleClick("-")}
+            />
+          )}
+        </div>
+        <div>
+          {page} / {Math.ceil(count / 15)}
+        </div>
+        <div className="arrows">
+          {page < Math.ceil(count / 15) && (
+            <IoIosArrowForward
+              className="pagination-arrow"
+              onClick={() => handleClick("+")}
+            />
+          )}
+        </div>
+      </div>
+      <span>({count} offres)</span>
     </div>
   );
 };

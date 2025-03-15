@@ -4,7 +4,7 @@ import Product from "./pages/Product";
 import "./App.css";
 import Header from "./components/Header/Header";
 import ConnectionModal from "./components/ConnectionModal/ConnectionModal";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import cookies from "js-cookie";
 
 function App() {

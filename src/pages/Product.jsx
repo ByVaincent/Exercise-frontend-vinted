@@ -3,6 +3,9 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import Button from "../components/Button/Button";
 import Spinner from "../components/Spinner";
+import Carousel from "react-multi-carousel";
+import "react-multi-carousel/lib/styles.css";
+import WithStyles from "react-multi-carousel";
 
 const Product = () => {
   const { id } = useParams();
@@ -27,6 +30,27 @@ const Product = () => {
     }
   }, [id]);
 
+  //responsive carousel controles
+  const responsive = {
+    superLargeDesktop: {
+      // the naming can be any, depends on you.
+      breakpoint: { max: 4000, min: 3000 },
+      items: 1,
+    },
+    desktop: {
+      breakpoint: { max: 3000, min: 1024 },
+      items: 1,
+    },
+    tablet: {
+      breakpoint: { max: 1024, min: 464 },
+      items: 1,
+    },
+    mobile: {
+      breakpoint: { max: 464, min: 0 },
+      items: 1,
+    },
+  };
+
   return isLoading ? (
     <div className="product">
       <Spinner />
@@ -35,13 +59,51 @@ const Product = () => {
     <div className="product">
       <div className="container">
         <div className="product-picture">
-          <img
+          {/* <img
             src={
               productDatas.product_image[0]?.secure_url &&
               productDatas.product_image[0].secure_url
             }
             alt="photo du vetement"
-          />
+          /> */}
+          <Carousel className="carousel" responsive={responsive}>
+            <div>
+              <img
+                src={
+                  productDatas.product_image[0]?.secure_url &&
+                  productDatas.product_image[0].secure_url
+                }
+                alt="photo du vetement"
+              />
+            </div>
+            <div>
+              <img
+                src={
+                  productDatas.product_image[1]?.secure_url &&
+                  productDatas.product_image[1].secure_url
+                }
+                alt="photo du vetement"
+              />
+            </div>
+            <div>
+              <img
+                src={
+                  productDatas.product_image[2]?.secure_url &&
+                  productDatas.product_image[2].secure_url
+                }
+                alt="photo du vetement"
+              />
+            </div>
+            <div>
+              <img
+                src={
+                  productDatas.product_image[3]?.secure_url &&
+                  productDatas.product_image[3].secure_url
+                }
+                alt="photo du vetement"
+              />
+            </div>
+          </Carousel>
         </div>
         <div className="product-infos">
           <div className="product-details">

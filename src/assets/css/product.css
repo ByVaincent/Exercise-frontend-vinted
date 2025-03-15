@@ -11,12 +11,16 @@
 
 .product-picture {
   width: 30%;
+  height: 500px;
+  border-radius: 5px;
+  overflow: hidden;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
 }
 
 .product-picture img {
   width: 100%;
-  aspect-ratio: 9 / 13;
   object-fit: cover;
+  border-radius: 5px;
 }
 
 .product-infos {

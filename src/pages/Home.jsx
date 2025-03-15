@@ -58,7 +58,6 @@ const Home = ({ filters }) => {
                         productsDatas.count === 0 ? 1 : productsDatas.count
                       }
                     />
-                    <span>({productsDatas.count} offres)</span>
                   </div>
                 ))}
               <div className="products-preview-display">
