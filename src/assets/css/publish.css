@@ -7,3 +7,17 @@
   display: flex;
   flex-direction: column;
 }
+
+.publish-main form section {
+  height: 100px;
+  padding: 20px;
+  border: 1px solid #2cb1ba;
+}
+.publish-main form section div {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px dotted #2cb1ba;
+}

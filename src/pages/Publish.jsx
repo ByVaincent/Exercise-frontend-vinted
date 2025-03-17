@@ -1,9 +1,10 @@
 import { Navigate } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
+import Dropzone from "../components/DropZone";
 
 const Publish = ({ token }) => {
-  const [pictures, setPictures] = useState(null);
+  //   const [pictures, setPictures] = useState(null);
   const [publishForm, setPublishForm] = useState({
     title: "",
     brand: "",
@@ -15,18 +16,22 @@ const Publish = ({ token }) => {
     description: "",
   });
 
-  console.log(pictures);
-
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    const formData = new FormData();
+    const formData = new FormData(event.currentTarget);
 
-    for (const property in publishForm) {
-      formData.append(property, publishForm[property]);
-    }
+    console.log(formData.get("picture"));
 
-    formData.append("picture", pictures);
+    // const formData = new FormData();
+
+    // for (const property in publishForm) {
+    //   formData.append(property, publishForm[property]);
+    // }
+
+    // formData.append("picture", pictures);
+
+    // console.log(formData.get("files"));
 
     try {
       const post = await axios.post(
@@ -58,6 +63,19 @@ const Publish = ({ token }) => {
     <main className="publish-main">
       <form className="container" onSubmit={handleSubmit}>
         <h1>Vends ton article</h1>
+        {/* <Dropzone onDrop={(acceptedFiles) => console.log(acceptedFiles)}>
+          {({ getRootProps, getInputProps }) => (
+            <section>
+              <div {...getRootProps()}>
+                <input {...getInputProps()} />
+                <p>Drag 'n' drop some files here, or click to select files</p>
+              </div>
+            </section>
+          )}
+        </Dropzone> */}
+
+        <Dropzone name={"picture"} />
+
         <input
           type="file"
           name="pictures"
