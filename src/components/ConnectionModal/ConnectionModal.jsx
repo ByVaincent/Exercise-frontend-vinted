@@ -26,9 +26,15 @@ const ConnectionModal = ({ setConnectionModal, modalType, setToken }) => {
     event.preventDefault();
 
     try {
+      const formData = new FormData();
+
+      for (const property in inputsCtrl) {
+        formData.append(property, inputsCtrl[property]);
+      }
+
       const sendDatas = await axios.post(
         `${import.meta.env.VITE_API_URL}/user/signup`,
-        inputsCtrl,
+        formData,
         {
           headers: {
             "Content-Type": "multipart/form-data",
@@ -37,6 +43,7 @@ const ConnectionModal = ({ setConnectionModal, modalType, setToken }) => {
       );
 
       const token = sendDatas.data.token;
+      console.log(sendDatas);
 
       cookies.set("token", token, { expires: 1 });
       setToken(token);
@@ -111,6 +118,17 @@ const ConnectionModal = ({ setConnectionModal, modalType, setToken }) => {
                     });
                   }}
                   required
+                />
+                <label htmlFor="avatar">Photo de profil</label>
+                <input
+                  type="file"
+                  name="avatar"
+                  id="avatar"
+                  onChange={(event) => {
+                    setInputsCtrl((prevState) => {
+                      return { ...prevState, picture: event.target.files[0] };
+                    });
+                  }}
                 />
               </fieldset>
 
