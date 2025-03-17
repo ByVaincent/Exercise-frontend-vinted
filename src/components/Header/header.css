@@ -5,6 +5,7 @@ header > div {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 50px;
 }
 
 .login-sale {
@@ -15,4 +16,35 @@ header > div {
 .login {
   display: flex;
   gap: 10px;
+}
+
+.filters {
+  display: flex;
+  gap: 35px;
+  flex: 1;
+}
+
+.filters > input:first-child {
+  flex: 3;
+  padding-left: 1em;
+  border-radius: 5px;
+  border: 1px solid #2cb1ba;
+}
+.filters > input:first-child::placeholder {
+  color: #2cb1ba;
+  opacity: 0.7;
+}
+
+.filters > input:first-child:focus {
+  outline: none;
+}
+
+/* Styling the range filter */
+
+#output {
+  display: none;
+}
+
+.price-filter {
+  flex: 1;
 }

@@ -11,6 +11,7 @@ const TwoThumbs = ({ rtl, filters, setFilters }) => {
 
   return (
     <div
+      className="range-div"
       style={{
         display: "flex",
         justifyContent: "center",
@@ -54,7 +55,7 @@ const TwoThumbs = ({ rtl, filters, setFilters }) => {
                 borderRadius: "4px",
                 background: getTrackBackground({
                   values,
-                  colors: ["#ccc", "#548BF4", "#ccc"],
+                  colors: ["#ccc", "#2cb1ba", "#ccc"],
                   min: MIN,
                   max: MAX,
                   rtl,
@@ -72,9 +73,9 @@ const TwoThumbs = ({ rtl, filters, setFilters }) => {
             key={props.key}
             style={{
               ...props.style,
-              height: "42px",
-              width: "42px",
-              borderRadius: "4px",
+              height: "20px",
+              width: "20px",
+              borderRadius: "50%",
               backgroundColor: "#FFF",
               display: "flex",
               justifyContent: "center",
@@ -84,8 +85,8 @@ const TwoThumbs = ({ rtl, filters, setFilters }) => {
           >
             <div
               style={{
-                height: "16px",
-                width: "5px",
+                height: "12px",
+                width: "2px",
                 backgroundColor: isDragged ? "#548BF4" : "#CCC",
               }}
             />

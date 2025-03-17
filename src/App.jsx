@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import Home from "./pages/Home";
 import Product from "./pages/Product";
+import Publish from "./pages/Publish";
 import "./App.css";
 import Header from "./components/Header/Header";
 import ConnectionModal from "./components/ConnectionModal/ConnectionModal";
@@ -36,6 +37,12 @@ function App() {
         <Routes>
           <Route path={"/"} element={<Home filters={filters} />}></Route>
           <Route path={"/product/:id"} element={<Product />}></Route>
+          <Route
+            path={"/publish"}
+            element={
+              <Publish token={token} setConnectionModal={setConnectionModal} />
+            }
+          ></Route>
         </Routes>
         {connectionModal && (
           <ConnectionModal

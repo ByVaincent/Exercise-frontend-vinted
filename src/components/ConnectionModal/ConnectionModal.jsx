@@ -91,7 +91,7 @@ const ConnectionModal = ({ setConnectionModal, modalType, setToken }) => {
                 <input
                   type="email"
                   name="email"
-                  placeholder="email"
+                  placeholder="Email"
                   value={inputsCtrl.email}
                   onChange={(event) => {
                     setInputsCtrl((prevState) => {
@@ -133,14 +133,13 @@ const ConnectionModal = ({ setConnectionModal, modalType, setToken }) => {
                   <label htmlFor="check-newsletter">
                     S'inscrire à notre newsletter
                   </label>
+                  <p>
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                    Sed, exercitationem? Ipsam harum quibusdam accusantium sed
+                    fugit ad quasi recusandae laudantium, amet pariatur,
+                    doloribus ullam voluptates sint nemo ipsum omnis illo!
+                  </p>
                 </div>
-
-                <p>
-                  Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sed,
-                  exercitationem? Ipsam harum quibusdam accusantium sed fugit ad
-                  quasi recusandae laudantium, amet pariatur, doloribus ullam
-                  voluptates sint nemo ipsum omnis illo!
-                </p>
               </fieldset>
 
               <button className={"button-sale"}>S'inscrire</button>
@@ -161,7 +160,7 @@ const ConnectionModal = ({ setConnectionModal, modalType, setToken }) => {
                 <input
                   type="email"
                   name="email"
-                  placeholder="email"
+                  placeholder="Email"
                   value={inputsCtrl.email}
                   onChange={(event) => {
                     setInputsCtrl((prevState) => {
@@ -185,7 +184,52 @@ const ConnectionModal = ({ setConnectionModal, modalType, setToken }) => {
               </fieldset>
 
               <button className={"button-sale"}>Se connecter</button>
-              <p className="auth-error">{error}</p>
+              <p className="auth-error error-message">{error}</p>
+            </form>
+            <p onClick={() => setConnectionModal("signUp")}>
+              Pas encore de compte ? Inscris-toi!
+            </p>
+          </div>
+        </div>
+      )}
+
+      {modalType === "unauthorized" && (
+        <div className="modal-container" onClick={exitModal}>
+          <div className="modal" onClick={(event) => event.stopPropagation()}>
+            <div className="error-message">
+              Vous devez être connecté pour pouvoir poster une offre
+            </div>
+            <h2>Login</h2>
+            <form className="connection-form" onSubmit={login}>
+              <fieldset>
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="Email"
+                  value={inputsCtrl.email}
+                  onChange={(event) => {
+                    setInputsCtrl((prevState) => {
+                      return { ...prevState, email: event.target.value };
+                    });
+                  }}
+                  required
+                />
+                <input
+                  type="password"
+                  name="password"
+                  placeholder="Mot de passe"
+                  value={inputsCtrl.password}
+                  onChange={(event) => {
+                    setInputsCtrl((prevState) => {
+                      return { ...prevState, password: event.target.value };
+                    });
+                  }}
+                  required
+                />
+              </fieldset>
+
+              <button className={"button-sale"}>Se connecter</button>
+              <p className="auth-error error-message">{error}</p>
             </form>
             <p onClick={() => setConnectionModal("signUp")}>
               Pas encore de compte ? Inscris-toi!

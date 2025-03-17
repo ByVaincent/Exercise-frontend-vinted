@@ -1,0 +1,9 @@
+.publish-main form {
+  display: flex;
+  flex-direction: column;
+}
+
+.publish-main form fieldset {
+  display: flex;
+  flex-direction: column;
+}
