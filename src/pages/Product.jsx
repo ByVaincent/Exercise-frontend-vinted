@@ -67,7 +67,7 @@ const Product = () => {
             alt="photo du vetement"
           /> */}
           <Carousel className="carousel" responsive={responsive}>
-            <div>
+            {productDatas.product_image[0] && (
               <img
                 src={
                   productDatas.product_image[0]?.secure_url &&
@@ -75,8 +75,9 @@ const Product = () => {
                 }
                 alt="photo du vetement"
               />
-            </div>
-            <div>
+            )}
+
+            {productDatas.product_image[1] && (
               <img
                 src={
                   productDatas.product_image[1]?.secure_url &&
@@ -84,8 +85,8 @@ const Product = () => {
                 }
                 alt="photo du vetement"
               />
-            </div>
-            <div>
+            )}
+            {productDatas.product_image[2] && (
               <img
                 src={
                   productDatas.product_image[2]?.secure_url &&
@@ -93,8 +94,8 @@ const Product = () => {
                 }
                 alt="photo du vetement"
               />
-            </div>
-            <div>
+            )}
+            {productDatas.product_image[3] && (
               <img
                 src={
                   productDatas.product_image[3]?.secure_url &&
@@ -102,7 +103,16 @@ const Product = () => {
                 }
                 alt="photo du vetement"
               />
-            </div>
+            )}
+            {productDatas.product_image[4] && (
+              <img
+                src={
+                  productDatas.product_image[4]?.secure_url &&
+                  productDatas.product_image[4].secure_url
+                }
+                alt="photo du vetement"
+              />
+            )}
           </Carousel>
         </div>
         <div className="product-infos">

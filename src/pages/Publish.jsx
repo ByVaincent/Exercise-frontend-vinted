@@ -62,21 +62,11 @@ const Publish = ({ token }) => {
   ) : (
     <main className="publish-main">
       <form className="container" onSubmit={handleSubmit}>
-        <h1>Vends ton article</h1>
-        {/* <Dropzone onDrop={(acceptedFiles) => console.log(acceptedFiles)}>
-          {({ getRootProps, getInputProps }) => (
-            <section>
-              <div {...getRootProps()}>
-                <input {...getInputProps()} />
-                <p>Drag 'n' drop some files here, or click to select files</p>
-              </div>
-            </section>
-          )}
-        </Dropzone> */}
+        <h2>Vends ton article</h2>
 
         <Dropzone name={"picture"} />
 
-        <input
+        {/* <input
           type="file"
           name="pictures"
           id="pictures"
@@ -84,7 +74,7 @@ const Publish = ({ token }) => {
           onChange={(event) => {
             setPictures(event.target.files[0]);
           }}
-        />
+        /> */}
         <fieldset>
           <label htmlFor="title">Titre</label>
           <input

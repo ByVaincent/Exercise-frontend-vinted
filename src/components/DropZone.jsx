@@ -29,7 +29,7 @@ function Dropzone(props) {
   ));
 
   return (
-    <div className="dropzone- container">
+    <div className="dropzone-container">
       <div {...getRootProps({ className: "dropzone" })}>
         {/*
             Add a hidden file input 
