@@ -1,9 +1,10 @@
 import { Navigate } from "react-router-dom";
 import { useState } from "react";
+import axios from "axios";
 
-const Publish = ({ token, setConnectionModal }) => {
+const Publish = ({ token }) => {
+  const [pictures, setPictures] = useState(null);
   const [publishForm, setPublishForm] = useState({
-    pictures: "",
     title: "",
     brand: "",
     size: "",
@@ -11,14 +12,37 @@ const Publish = ({ token, setConnectionModal }) => {
     condition: "",
     city: "",
     price: "",
+    description: "",
   });
 
-  console.log(publishForm);
+  console.log(pictures);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    console.log(event.target.value);
+    const formData = new FormData();
+
+    for (const property in publishForm) {
+      formData.append(property, publishForm[property]);
+    }
+
+    formData.append("picture", pictures);
+
+    try {
+      const post = await axios.post(
+        `${import.meta.env.VITE_API_URL}/offer/publish`,
+        formData,
+        {
+          headers: {
+            authorization: `Bearer ${token}`,
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
+      console.log(post);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const updateState = (event, key, state, setState) => {
@@ -40,9 +64,7 @@ const Publish = ({ token, setConnectionModal }) => {
           id="pictures"
           multiple={true}
           onChange={(event) => {
-            setPublishForm((prevState) => {
-              return { ...prevState, pictures: event.target.files };
-            });
+            setPictures(event.target.files[0]);
           }}
         />
         <fieldset>
@@ -57,7 +79,14 @@ const Publish = ({ token, setConnectionModal }) => {
             }}
           />
           <label htmlFor="description">Décris ton article</label>
-          <input type="text" name="description" id="description" />
+          <input
+            type="text"
+            name="description"
+            id="description"
+            onChange={(event) => {
+              updateState(event, "description", publishForm, setPublishForm);
+            }}
+          />
         </fieldset>
 
         <fieldset>
