@@ -6,6 +6,7 @@ import Spinner from "../components/Spinner";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import WithStyles from "react-multi-carousel";
+import MultiCarousel from "../components/Carousel";
 
 const Product = () => {
   const { id } = useParams();
@@ -30,26 +31,6 @@ const Product = () => {
     }
   }, [id]);
 
-  //responsive carousel controles
-  const responsive = {
-    superLargeDesktop: {
-      // the naming can be any, depends on you.
-      breakpoint: { max: 4000, min: 3000 },
-      items: 1,
-    },
-    desktop: {
-      breakpoint: { max: 3000, min: 1024 },
-      items: 1,
-    },
-    tablet: {
-      breakpoint: { max: 1024, min: 464 },
-      items: 1,
-    },
-    mobile: {
-      breakpoint: { max: 464, min: 0 },
-      items: 1,
-    },
-  };
 
   return isLoading ? (
     <div className="product">
@@ -59,61 +40,10 @@ const Product = () => {
     <div className="product">
       <div className="container">
         <div className="product-picture">
-          {/* <img
-            src={
-              productDatas.product_image[0]?.secure_url &&
-              productDatas.product_image[0].secure_url
-            }
-            alt="photo du vetement"
-          /> */}
-          <Carousel className="carousel" responsive={responsive}>
-            {productDatas.product_image[0] && (
-              <img
-                src={
-                  productDatas.product_image[0]?.secure_url &&
-                  productDatas.product_image[0].secure_url
-                }
-                alt="photo du vetement"
-              />
-            )}
 
-            {productDatas.product_image[1] && (
-              <img
-                src={
-                  productDatas.product_image[1]?.secure_url &&
-                  productDatas.product_image[1].secure_url
-                }
-                alt="photo du vetement"
-              />
-            )}
-            {productDatas.product_image[2] && (
-              <img
-                src={
-                  productDatas.product_image[2]?.secure_url &&
-                  productDatas.product_image[2].secure_url
-                }
-                alt="photo du vetement"
-              />
-            )}
-            {productDatas.product_image[3] && (
-              <img
-                src={
-                  productDatas.product_image[3]?.secure_url &&
-                  productDatas.product_image[3].secure_url
-                }
-                alt="photo du vetement"
-              />
-            )}
-            {productDatas.product_image[4] && (
-              <img
-                src={
-                  productDatas.product_image[4]?.secure_url &&
-                  productDatas.product_image[4].secure_url
-                }
-                alt="photo du vetement"
-              />
-            )}
-          </Carousel>
+{productDatas.product_image.length > 0 &&   <MultiCarousel productDatas={productDatas}/>}
+     
+         
         </div>
         <div className="product-infos">
           <div className="product-details">

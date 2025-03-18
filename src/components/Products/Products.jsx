@@ -12,8 +12,7 @@ const Products = ({ offer }) => {
             <div className="user-avatar-container">
               <img
                 src={
-                  owner.account?.avatar?.secure_url &&
-                  owner.account.avatar.secure_url
+                  owner.account?.avatar?.secure_url || null
                 }
                 alt="user avatar"
                 className="user-avatar"
@@ -25,7 +24,7 @@ const Products = ({ offer }) => {
 
         <img
           className="product-preview-picture"
-          src={product_image[0]?.secure_url || ""}
+          src={product_image[0]?.secure_url || null}
           alt="photo du produit"
         />
 
