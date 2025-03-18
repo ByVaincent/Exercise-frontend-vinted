@@ -3,6 +3,7 @@ import Button from "../Button/Button";
 import "./connectionModal.css";
 import { useState } from "react";
 import cookies from "js-cookie";
+import { RxCross2 } from "react-icons/rx";
 
 const ConnectionModal = ({ setConnectionModal, modalType, setToken }) => {
   //utils exit modal
@@ -20,6 +21,7 @@ const ConnectionModal = ({ setConnectionModal, modalType, setToken }) => {
     password: "",
     newsletter: false,
   });
+  
 
   //sign up request function
   const signUp = async (event) => {
@@ -79,7 +81,11 @@ const ConnectionModal = ({ setConnectionModal, modalType, setToken }) => {
     <>
       {modalType === "signUp" && (
         <div className="modal-container" onClick={exitModal}>
+          <div className="wrapper-modal">
           <div className="modal" onClick={(event) => event.stopPropagation()}>
+          <div className="exit-modal-cross" >
+            <RxCross2 onClick={exitModal}/>
+            </div>
             <h2>S'inscrire</h2>
             <form className="connection-form" onSubmit={signUp}>
               <fieldset>
@@ -119,7 +125,7 @@ const ConnectionModal = ({ setConnectionModal, modalType, setToken }) => {
                   }}
                   required
                 />
-                <label htmlFor="avatar">Photo de profil</label>
+                <label className="button-sale" htmlFor="avatar">Ajouter une photo de profil</label>
                 <input
                   type="file"
                   name="avatar"
@@ -130,6 +136,7 @@ const ConnectionModal = ({ setConnectionModal, modalType, setToken }) => {
                     });
                   }}
                 />
+                <div className="uploaded-picture-connection">{inputsCtrl.picture?.name && inputsCtrl.picture.name}</div>
               </fieldset>
 
               <fieldset className="checkbox-signup">
@@ -168,54 +175,15 @@ const ConnectionModal = ({ setConnectionModal, modalType, setToken }) => {
             </p>
           </div>
         </div>
-      )}
-      {modalType === "login" && (
-        <div className="modal-container" onClick={exitModal}>
-          <div className="modal" onClick={(event) => event.stopPropagation()}>
-            <h2>Login</h2>
-            <form className="connection-form" onSubmit={login}>
-              <fieldset>
-                <input
-                  type="email"
-                  name="email"
-                  placeholder="Email"
-                  value={inputsCtrl.email}
-                  onChange={(event) => {
-                    setInputsCtrl((prevState) => {
-                      return { ...prevState, email: event.target.value };
-                    });
-                  }}
-                  required
-                />
-                <input
-                  type="password"
-                  name="password"
-                  placeholder="Mot de passe"
-                  value={inputsCtrl.password}
-                  onChange={(event) => {
-                    setInputsCtrl((prevState) => {
-                      return { ...prevState, password: event.target.value };
-                    });
-                  }}
-                  required
-                />
-              </fieldset>
-
-              <button className={"button-sale"}>Se connecter</button>
-              <p className="auth-error error-message">{error}</p>
-            </form>
-            <p onClick={() => setConnectionModal("signUp")}>
-              Pas encore de compte ? Inscris-toi!
-            </p>
-          </div>
         </div>
       )}
-
-      {modalType === "unauthorized" && (
+      {modalType === "login" && (
+         
         <div className="modal-container" onClick={exitModal}>
+          <div className="wrapper-modal">
           <div className="modal" onClick={(event) => event.stopPropagation()}>
-            <div className="error-message">
-              Vous devez être connecté pour pouvoir poster une offre
+          <div className="exit-modal-cross" >
+            <RxCross2 onClick={exitModal}/>
             </div>
             <h2>Login</h2>
             <form className="connection-form" onSubmit={login}>
@@ -253,6 +221,55 @@ const ConnectionModal = ({ setConnectionModal, modalType, setToken }) => {
               Pas encore de compte ? Inscris-toi!
             </p>
           </div>
+        </div>
+        </div>
+      )}
+
+      {modalType === "unauthorized" && (
+   
+        <div className="modal-container" onClick={exitModal}>     
+        <div className="wrapper-modal">
+          <div className="modal" onClick={(event) => event.stopPropagation()}>
+            <div className="error-message">
+              Vous devez être connecté pour pouvoir poster ou acheter un vêtement
+            </div>
+            <h2>Login</h2>
+            <form className="connection-form" onSubmit={login}>
+              <fieldset>
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="Email"
+                  value={inputsCtrl.email}
+                  onChange={(event) => {
+                    setInputsCtrl((prevState) => {
+                      return { ...prevState, email: event.target.value };
+                    });
+                  }}
+                  required
+                />
+                <input
+                  type="password"
+                  name="password"
+                  placeholder="Mot de passe"
+                  value={inputsCtrl.password}
+                  onChange={(event) => {
+                    setInputsCtrl((prevState) => {
+                      return { ...prevState, password: event.target.value };
+                    });
+                  }}
+                  required
+                />
+              </fieldset>
+
+              <button className={"button-sale"}>Se connecter</button>
+              <p className="auth-error error-message">{error}</p>
+            </form>
+            <p onClick={() => setConnectionModal("signUp")}>
+              Pas encore de compte ? Inscris-toi!
+            </p>
+          </div>
+        </div>
         </div>
       )}
     </>

@@ -1,0 +1,45 @@
+.modal-payment{
+    overflow-y: scroll;
+}
+
+.command-summary {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.command-summary hr {
+    width: 100%;
+    color: #2cb1ba;
+    opacity: 0.5;
+}
+
+.command-summary-details {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+}
+
+.command-summary-details div, .total {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.total {
+    font-size: 1.2em;
+    font-weight: 600;
+}
+
+.payment-message {
+    font-size: 0.9em;
+    text-align: center;
+    line-height: 1.2em;
+}
+
+.payment-error {
+    color: red;
+}
+

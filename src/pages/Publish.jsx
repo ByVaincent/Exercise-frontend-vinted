@@ -22,8 +22,6 @@ const Publish = ({ token }) => {
 
     const formData = new FormData(event.currentTarget);
 
-    console.log(formData.get("picture"));
-
     // const formData = new FormData();
 
     // for (const property in publishForm) {

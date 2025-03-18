@@ -1,0 +1,8 @@
+.payment-succeed{
+    font-size: 1.2em;
+    overflow-y: hidden;
+}
+
+.payment-succeed a{
+    font-size: 0.8em;
+}

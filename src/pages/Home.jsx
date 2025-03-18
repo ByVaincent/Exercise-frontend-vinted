@@ -1,14 +1,12 @@
 import Button from "../components/Button/Button";
 import axios from "axios";
-
 import { useEffect, useState } from "react";
-
 import Products from "../components/Products/Products";
-import Product from "./Product";
 import Pagination from "../components/Pagination/Pagination";
 import Spinner from "../components/Spinner";
 
 const Home = ({ filters }) => {
+  
   const [productsDatas, setProductsDatas] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [page, setPage] = useState(1);

@@ -3,15 +3,13 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import Button from "../components/Button/Button";
 import Spinner from "../components/Spinner";
-import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-import WithStyles from "react-multi-carousel";
 import MultiCarousel from "../components/Carousel";
 
-const Product = () => {
+const Product = ({setPaymentModal, productDatas, setProductdatas}) => {
   const { id } = useParams();
 
-  const [productDatas, setProductdatas] = useState(null);
+  
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -29,7 +27,7 @@ const Product = () => {
     } catch (error) {
       console.log(error.response);
     }
-  }, [id]);
+  }, [id, setProductdatas]);
 
 
   return isLoading ? (
@@ -90,7 +88,7 @@ const Product = () => {
             </div>
           </div>
 
-          <Button text={"Acheter"} classProps={"button-sale"} />
+          <Button text={"Acheter"} classProps={"button-sale"} handleClick={() => {setPaymentModal(true)}}/>
         </div>
       </div>
     </div>

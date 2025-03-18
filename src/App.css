@@ -3,6 +3,7 @@
 @import url("./assets/css/home.css");
 @import url("./assets/css/product.css");
 @import url("./assets/css/publish.css");
+@import url("./assets/css/paymentSucceed.css");
 
 * {
   box-sizing: border-box;
@@ -31,8 +32,16 @@ h2 {
   font-weight: 600;
 }
 
+h3 {
+  font-weight: 600;
+  font-size: 1.2em;
+}
 .error-message {
   color: rgb(255, 93, 93);
   font-weight: 600;
   line-height: 1.4em;
+}
+
+.bold {
+  font-weight: 600;
 }

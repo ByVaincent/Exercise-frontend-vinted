@@ -22,7 +22,7 @@ const MultiCarousel = ({productDatas}) => {
         },
       };
 
-      console.log(productDatas.product_image.length);
+     
       if(productDatas.product_image.length === 1){
         return <Carousel className="carousel" responsive={responsive}>
         
