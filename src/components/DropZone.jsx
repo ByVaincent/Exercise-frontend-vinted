@@ -3,7 +3,7 @@ import { useDropzone } from "react-dropzone";
 import { useRef } from "react";
 
 function Dropzone(props) {
-  const { required, name } = props;
+  const { required, name, classProps } = props;
 
   const hiddenInputRef = useRef(null);
 
@@ -45,7 +45,7 @@ function Dropzone(props) {
         />
         <input {...getInputProps()} />
         <p>Drag 'n' drop some files here</p>
-        <button type="button" onClick={open}>
+        <button className={classProps} type="button" onClick={open}>
           Open File Dialog
         </button>
       </div>

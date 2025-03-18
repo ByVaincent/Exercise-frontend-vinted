@@ -65,7 +65,7 @@ const Publish = ({ token }) => {
       <form className="container" onSubmit={handleSubmit}>
         <h2>Vends ton article</h2>
 
-        <Dropzone name={"picture"} />
+        <Dropzone name={"picture"} classProps={"button-sale button-file"}/>
 
         {/* <input
           type="file"
