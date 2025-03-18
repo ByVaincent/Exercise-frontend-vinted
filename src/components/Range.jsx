@@ -67,7 +67,7 @@ const TwoThumbs = ({ rtl, filters, setFilters }) => {
             </div>
           </div>
         )}
-        renderThumb={({ props, isDragged }) => (
+        renderThumb={({ index, props, isDragged }) => (
           <div
             {...props}
             key={props.key}
@@ -85,18 +85,63 @@ const TwoThumbs = ({ rtl, filters, setFilters }) => {
           >
             <div
               style={{
-                height: "12px",
-                width: "2px",
+                position: "absolute",
+                top: "-28px",
+                color: "#fff",
+                fontWeight: "bold",
+                fontSize: "12px",
+                fontFamily: "Arial,Helvetica Neue,Helvetica,sans-serif",
+                padding: "4px",
+                width: "40px",
+                display:"flex",
+                justifyContent:"center",
+                borderRadius: "4px",
+                backgroundColor: "#548BF4",
+              }}
+            >
+              {values[index].toFixed(0) + " €"}
+            </div>
+            <div
+              style={{
+                height: "16px",
+                width: "5px",
                 backgroundColor: isDragged ? "#548BF4" : "#CCC",
               }}
             />
           </div>
         )}
       />
-      <output style={{ marginTop: "30px" }} id="output">
-        {values[0].toFixed(1)} - {values[1].toFixed(1)}
-      </output>
     </div>
+    //     renderThumb={({ props, isDragged }) => (
+    //       <div
+    //         {...props}
+    //         key={props.key}
+    //         style={{
+    //           ...props.style,
+    //           height: "20px",
+    //           width: "20px",
+    //           borderRadius: "50%",
+    //           backgroundColor: "#FFF",
+    //           display: "flex",
+    //           justifyContent: "center",
+    //           alignItems: "center",
+    //           boxShadow: "0px 2px 6px #AAA",
+    //         }}
+    //       >
+    //         <div
+    //           style={{
+    //             height: "12px",
+    //             width: "2px",
+    //             backgroundColor: isDragged ? "#548BF4" : "#CCC",
+    //           }}
+    //         />
+    //       </div>
+    //     )}
+    //   />
+    //   <output style={{ marginTop: "30px" }} id="output">
+    //     {values[0].toFixed(1)} - {values[1].toFixed(1)}
+    //   </output>
+    // </div>
   );
 };
 

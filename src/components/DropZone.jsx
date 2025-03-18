@@ -1,6 +1,7 @@
 import React from "react";
 import { useDropzone } from "react-dropzone";
 import { useRef } from "react";
+import { RiDragDropFill } from "react-icons/ri";
 
 function Dropzone(props) {
   const { required, name, classProps } = props;
@@ -44,13 +45,13 @@ function Dropzone(props) {
           multiple={true}
         />
         <input {...getInputProps()} />
-        <p>Drag 'n' drop some files here</p>
+        <p><RiDragDropFill/> Glissez les fichiers ici</p>
         <button className={classProps} type="button" onClick={open}>
-          Open File Dialog
+          Ouvrir l'explorateur de fichier
         </button>
       </div>
       <aside>
-        <h4>Files</h4>
+        <h4>Files : </h4>
         <ul>{files}</ul>
       </aside>
     </div>

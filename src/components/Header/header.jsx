@@ -4,6 +4,8 @@ import "./header.css";
 import * as React from "react";
 import TwoThumbs from "../Range";
 import { useNavigate } from "react-router-dom";
+import { IoIosArrowRoundDown } from "react-icons/io";
+import { IoIosArrowRoundUp } from "react-icons/io";
 
 const Header = ({
   token,
@@ -33,7 +35,7 @@ const Header = ({
             }}
           />
 
-          <button
+          {/* <button
             onClick={() => {
               setFilters((prevState) => {
                 return {
@@ -45,8 +47,36 @@ const Header = ({
             }}
           >
             Crois / décrois
-          </button>
+          </button> */}
+
+          <div className="switch">
+            <p>Trier par prix:</p>
+            <div className="sort-filter">
+               <IoIosArrowRoundUp />
+           
+            <div className="switch-back">
+              <div className="switch-front switc" 
+              onClick={(event) => {
+                event.target.classList.toggle("switch-on")
+                setFilters((prevState) => {
+                  return {
+                    ...prevState,
+                    sort:
+                      filters.sort === "price-asc" ? "price-desc" : "price-asc",
+                  };
+                })}}
+              
+              
+              ></div>
+            </div>
+            <IoIosArrowRoundDown />
+            </div>
+           
+            
+          </div>
+
           <div className="price-filter">
+           
             <TwoThumbs filters={filters} setFilters={setFilters} />
           </div>
         </div>

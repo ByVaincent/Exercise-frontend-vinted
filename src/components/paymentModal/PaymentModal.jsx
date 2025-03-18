@@ -26,7 +26,6 @@ const total = productDatas.product_price * 100 + shippingCosts + protectionCosts
 
 const [nextStepPayment, setNextStepPayment] = useState(null);
 
-
 const options = {
     mode: 'payment',
     amount: total,
@@ -48,7 +47,7 @@ const options = {
 
             {/* Payment */}
             <Elements stripe={stripePromise} options={options} >
-      <CheckoutForm productDatas={productDatas} total={total}/>
+      <CheckoutForm productDatas={productDatas} total={total} token={token}/>
     </Elements>
            
             
@@ -70,7 +69,7 @@ const options = {
                 <div className="total">
                     <span >Total</span><span>{total / 100} € </span>
                 </div>
-                <div className="payment-message">Il ne vous rest plus qu'une étape pour vous offrir <span className="bold">{productDatas.product_name}</span>. Vous allez payer <span className="bold">{total / 100} €</span> (frais de port inclus)</div>
+                <div className="payment-message">Il ne vous reste plus qu'une étape pour vous offrir <span className="bold">{productDatas.product_name}</span>. Vous allez payer <span className="bold">{total / 100} €</span> (frais de port inclus)</div>
             </div>
 
             <Button classProps={"button-sale"} text={"Payer"} handleClick={() => {setNextStepPayment("payment")}}/>

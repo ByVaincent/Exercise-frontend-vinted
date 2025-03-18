@@ -19,9 +19,12 @@ header > div {
 }
 
 .filters {
+  height: 60px;
   display: flex;
-  gap: 35px;
+  align-items: center;
+  gap: 50px;
   flex: 1;
+  position: relative;
 }
 
 .filters > input:first-child {
@@ -29,6 +32,7 @@ header > div {
   padding-left: 1em;
   border-radius: 5px;
   border: 1px solid #2cb1ba;
+  height: 30px;
 }
 .filters > input:first-child::placeholder {
   color: #2cb1ba;
@@ -39,6 +43,11 @@ header > div {
   outline: none;
 }
 
+.filters button {
+  height: 30px;
+
+}
+
 /* Styling the range filter */
 
 #output {
@@ -46,5 +55,53 @@ header > div {
 }
 
 .price-filter {
-  flex: 1;
+width: 80px;
+padding-top: 17px;
+}
+
+
+
+
+/* switch order */
+
+.switch {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  align-items: center;
+}
+
+.sort-filter{
+  display: flex;
+  gap: 8px;
+  font-size: 1.5em;
+
+  align-items: center;
+}
+
+.switch-back {
+  height: 5px;
+  width: 20px;
+  background-color: #1b7379;
+  position: relative;
+}
+
+.switch-front{
+  width: 20px;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  background-color: #2cb1ba;
+  position: absolute;
+  top: calc(0px - 7px);
+  left: calc(0% - 10px);
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
+transition: all ease 0.3s;
+}
+
+.switch-front:hover{
+  cursor: pointer;
+}
+
+.switch-on{
+  left: calc(100% - 7px)
 }

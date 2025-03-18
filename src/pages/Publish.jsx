@@ -3,8 +3,12 @@ import { useState } from "react";
 import axios from "axios";
 import Dropzone from "../components/DropZone";
 import Button from "../components/Button/Button";
+import { useNavigate } from "react-router-dom";
 
 const Publish = ({ token }) => {
+const navigate = useNavigate();
+
+
   //   const [pictures, setPictures] = useState(null);
   const [publishForm, setPublishForm] = useState({
     title: "",
@@ -17,20 +21,11 @@ const Publish = ({ token }) => {
     description: "",
   });
 
+
   const handleSubmit = async (event) => {
     event.preventDefault();
 
     const formData = new FormData(event.currentTarget);
-
-    // const formData = new FormData();
-
-    // for (const property in publishForm) {
-    //   formData.append(property, publishForm[property]);
-    // }
-
-    // formData.append("picture", pictures);
-
-    // console.log(formData.get("files"));
 
     try {
       const post = await axios.post(
@@ -43,7 +38,8 @@ const Publish = ({ token }) => {
           },
         }
       );
-      console.log(post);
+
+      navigate(`/product/${post.data._id}`)
     } catch (error) {
       console.log(error);
     }
@@ -54,6 +50,7 @@ const Publish = ({ token }) => {
     newState[key] = event.target.value;
 
     setState(newState);
+   
   };
 
   return !token ? (
@@ -65,15 +62,6 @@ const Publish = ({ token }) => {
 
         <Dropzone name={"picture"} classProps={"button-sale button-file"}/>
 
-        {/* <input
-          type="file"
-          name="pictures"
-          id="pictures"
-          multiple={true}
-          onChange={(event) => {
-            setPictures(event.target.files[0]);
-          }}
-        /> */}
         <fieldset>
 
           <div> <label htmlFor="title">Titre</label>
@@ -171,7 +159,7 @@ const Publish = ({ token }) => {
           <div>
                     <label htmlFor="price">Prix</label>
           <input
-            type="text"
+            type="number"
             name="price"
             id="price"
             placeholder="0.00 €"

@@ -67,7 +67,7 @@ const Home = ({ filters }) => {
                   </div>
                 ) : (
                   productsDatas.offers.map((offer) => (
-                    <Products key={offer._id} offer={offer} />
+                    !offer.sold &&  <Products key={offer._id} offer={offer} />
                   ))
                 )}
               </div>

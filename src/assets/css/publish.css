@@ -35,12 +35,14 @@
 }
 
 
-
-
 .dropzone-container aside ul {
   font-size: 0.8em;
   opacity: 0.5;
   margin: 5px 0;
+}
+
+.dropzone svg {
+  width: 40px !important
 }
 .publish-main form fieldset {
   display: flex;
